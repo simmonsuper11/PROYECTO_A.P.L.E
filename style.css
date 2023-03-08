@@ -1,0 +1,142 @@
+body {
+  background-image: linear-gradient(to bottom, #E2D0DF, #E2D0DF 10.8%, #F7E1F7 16.9%, #FFD8D6);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+}
+
+.card {
+  height: 420px;
+  width: 780px;
+  display: inline-block;
+  position: absolute;
+  top: 348px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: z-index 0.3s, -webkit-transform 0.3s, height 0.3s, opacity 0.3s, filter 0.1s, top 0.3s;
+  transition-timing-function: ease-out;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center center;
+}
+.card:hover {
+  cursor: ew-resize;
+}
+
+.cycleButton {
+  height: 46px;
+  width: 46px;
+  border-radius: 23px;
+  display: inline-block;
+  position: absolute;
+  top: 471px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  line-height: 32px;
+  font: 800 32px "Helvetica Neue";
+  background-color: #fff;
+  color: #fcdce7;
+  user-select: none;
+}
+.cycleButton:hover {
+  background-color: #f5f5f5;
+}
+
+.cycleButtonL {
+  transform: translateX(-491px);
+}
+
+.cycleButtonR {
+  transform: translateX(491px);
+}
+
+#carouselIndicators {
+  position: absolute;
+  top: 745px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 15px;
+  width: 75px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.indicator {
+  width: 15px;
+  height: 15px;
+}
+
+.frontCard {
+  top: 300px;
+}
+.frontCard:hover {
+  cursor: zoom-in;
+}
+
+#lightbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 10;
+  transition: display 0.8s;
+}
+#lightbox:hover {
+  cursor: zoom-out;
+}
+
+nav {
+  width: 100vw;
+  background-color: #ffefef;
+}
+
+#navLinks {
+  width: 980px;
+  height: 100px;
+  margin: auto;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font: 800 18px "Helvetica Neue";
+}
+#navLinks li {
+  display: inline-block;
+}
+#navLinks li:nth-child(-n+3) {
+  margin-right: 50px;
+}
+#navLinks li:nth-child(4) {
+  text-align: right;
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.navLink {
+  color: #000;
+}
+a.navLink:hover {
+  color: #4b8ea7;
+}
+
+a.buy {
+  background-image: linear-gradient(to bottom, #73D8FF, #A1EFFD);
+  padding: 14px 36px;
+  border-radius: 30px;
+  color: #fff;
+}
+a.buy:hover {
+  background-image: linear-gradient(to bottom, #58A6C4, #A1EFFD);
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Photo Carousel</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+  <section id="carousel">
+    <div class="cycleButton cycleButtonL" onClick="rotate.left()"><</div>
+    <div class="cycleButton cycleButtonR" onClick="rotate.right()">></div>
+    <div id="carouselIndicators">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 15 15" data-card="glacier" id="indicator1" onclick="rotate.indicatorClick(this)">
+        <circle fill="#fff" stroke="#fff" stroke-width="3" cx="7.5" cy="7.5" r="6"/>
+      </svg>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 15 15" data-card="wheat" id="indicator2" onclick="rotate.indicatorClick(this)">
+        <circle fill="transparent" stroke="#fff" stroke-width="3" cx="7.5" cy="7.5" r="6"/>
+      </svg>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 15 15" data-card="market" id="indicator3" onclick="rotate.indicatorClick(this)">
+        <circle fill="transparent" stroke="#fff" stroke-width="3" cx="7.5" cy="7.5" r="6"/>
+      </svg>
+    </div>
+  </section>
+  
+  <div id="lightbox" onclick="rotate.unzoom()"></div>
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
