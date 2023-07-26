@@ -1,0 +1,133 @@
+saldo_debito = 100000
+saldo_credito = 1000000
+intentos_fallidos = 0
+contrasena_actual = "1234"
+max_intentos = 3
+
+def verificar_contrasena(contrasena):
+    global intentos_fallidos
+    if contrasena == contrasena_actual:
+        intentos_fallidos = 0
+        return True
+    else:
+        intentos_fallidos += 1
+        if intentos_fallidos >= max_intentos:
+            print("papi pailas te bloquearon hasta el alma :)")
+            return False
+        else:
+            print(f"Contraseña incorrecta. {max_intentos - intentos_fallidos} intento(s) restante(s).")
+            return False
+
+def realizar_pago():
+    global saldo_credito, saldo_debito
+    print("Bienvenido al Banco Sapo mijo")
+    print("Ingrese el tipo de operación:")
+    print("1. Pago con tarjeta de débito")
+    print("2. Pago con tarjeta de crédito")
+    print("3. Retiro con tarjeta de débito")
+    print("4. Retiro con tarjeta de crédito")
+    print("5. Cambiar contraseña")
+    tipo_operacion = input("Ingrese el número de opción que desea utilizar: ")
+
+    if tipo_operacion == "1":  # Pago con tarjeta de débito
+        contrasena = input("Ingrese su contraseña de tarjeta de débito: ")
+        if verificar_contrasena(contrasena):
+            cantidad = int(input("Ingrese la cantidad a pagar: "))
+            if cantidad <= saldo_debito:
+                saldo_debito -= cantidad
+                print("Pago exitoso con tarjeta de débito. Saldo restante:", saldo_debito)
+            else:
+                print("Saldo insuficiente para realizar el pago con tarjeta de débito.")
+        else:
+            print("Contraseña incorrecta. No se puede realizar el pago con tarjeta de débito.")
+    elif tipo_operacion == "2":  # Pago con tarjeta de crédito
+        contrasena = input("Ingrese su contraseña de tarjeta de crédito: ")
+        if verificar_contrasena(contrasena):
+            cantidad = int(input("Ingrese la cantidad a pagar: "))
+            if cantidad <= saldo_credito:
+                saldo_credito -= cantidad
+                print("Pago exitoso con tarjeta de crédito. Saldo restante:", saldo_credito)
+            else:
+                print("Saldo insuficiente para realizar el pago con tarjeta de crédito.")
+        else:
+            print("Contraseña incorrecta. No se puede realizar el pago con tarjeta de crédito.")
+    elif tipo_operacion == "3":  # Retiro con tarjeta de débito
+        contrasena = input("Ingrese su contraseña de tarjeta de débito: ")
+        if verificar_contrasena(contrasena):
+            cantidad = int(input("Ingrese la cantidad a retirar: "))
+            if cantidad <= saldo_debito:
+                saldo_debito -= cantidad
+                print("Retiro exitoso con tarjeta de débito. Saldo restante:", saldo_debito)
+            else:
+                print("Saldo insuficiente para realizar el retiro con tarjeta de débito.")
+        else:
+            print("Contraseña incorrecta. No se puede realizar el retiro con tarjeta de débito.")
+    elif tipo_operacion == "4":  # Retiro con tarjeta de crédito
+        contrasena = input("Ingrese su contraseña de tarjeta de crédito: ")
+        if verificar_contrasena(contrasena):
+            cantidad = int(input("Ingrese la cantidad a retirar: "))
+            if cantidad <= saldo_credito:
+                saldo_credito -= cantidad
+                print("Retiro exitoso con tarjeta de crédito. Saldo restante:", saldo_credito)
+            else:
+                print("Saldo insuficiente para realizar el retiro con tarjeta de crédito.")
+        else:
+            print("Contraseña incorrecta. No se puede realizar el retiro con tarjeta de crédito.")
+    elif tipo_operacion == "5":  
+        contrasena_actual = input("Ingrese su contraseña actual: ")
+        if verificar_contrasena(contrasena_actual):
+            nueva_contrasena = input("Ingrese la nueva contraseña: ")
+            contrasena_actual = nueva_contrasena
+            print("Contraseña cambiada exitosamente.")
+        else:
+            print("Contraseña actual incorrecta. No se puede cambiar la contraseña.")
+    else:
+        print("Opción inválida")
+
+def consignacion(contrasena):
+    global saldo_credito, saldo_debito
+    if verificar_contrasena(contrasena):
+        num_cuenta = input("Ingrese el número de cuenta: ")
+        if num_cuenta == "123456789":
+            print("Ingrese el tipo de cuenta:")
+            print("1. Cuenta de débito")
+            print("2. Cuenta de crédito")
+            tipo_cuenta = input("Ingrese el número de opción que desea utilizar: ")
+
+            if tipo_cuenta == "1":
+                cantidad = int(input("Ingrese la cantidad a consignar en la cuenta de débito: "))
+                saldo_debito += cantidad
+                print("Consignación exitosa en cuenta de débito. Saldo actual:", saldo_debito)
+            elif tipo_cuenta == "2":
+                cantidad = int(input("Ingrese la cantidad a consignar en la cuenta de crédito: "))
+                saldo_credito += cantidad
+                print("Consignación exitosa en cuenta de crédito. Saldo actual:", saldo_credito)
+            else:
+                print("Opción inválida")
+        else:
+            print("Número de cuenta incorrecto. No se puede realizar la consignación.")
+    else:
+        print("Contraseña incorrecta. No se puede realizar la consignación.")
+
+def menu():
+    print("Menu:")
+    print("1. Realizar operación")
+    print("2. Realizar consignación")
+    print("3. Salir")
+    opcion = input("Ingrese el número de opción que desea utilizar: ")
+
+    if opcion == "1":
+        realizar_pago()
+    elif opcion == "2":
+        contrasena = input("Ingrese su contraseña: ")
+        consignacion(contrasena)
+    elif opcion == "3":
+        return True
+    else:
+        print("Opción inválida")
+
+    return False
+
+while intentos_fallidos < 3:
+    if menu():
+        break
